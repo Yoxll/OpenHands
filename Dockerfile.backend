@@ -13,4 +13,4 @@ RUN npm install -g @openhands/agent-canvas@1.27.1
 ENV PORT=8000
 EXPOSE 8000
 
-CMD ["agent-canvas", "--backend-only", "--public"]
+CMD ["agent-canvas", "--backend-only", "--public", "--host", "0.0.0.0", "--port", "8080"]
