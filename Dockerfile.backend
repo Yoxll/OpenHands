@@ -1,0 +1,16 @@
+
+FROM node:24-bookworm-slim
+
+RUN apt-get update && apt-get install -y \
+    curl git ca-certificates python3 \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN curl -LsSf https://astral.sh/uv/install.sh | \
+    env UV_INSTALL_DIR=/usr/local/bin sh
+
+RUN npm install -g @openhands/agent-canvas@1.27.1
+
+ENV PORT=8000
+EXPOSE 8000
+
+CMD ["agent-canvas", "--backend-only", "--public"]
